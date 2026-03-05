@@ -5,7 +5,7 @@ const statsData = [
     {
       title: "Current Patients",
       value: "125",
-      icon: <Users className="h-4 w-4 text-chart-2" />,
+      icon: <Users className="h-4 w-4 text-accent" />,
     },
     {
       title: "High-Risk Alerts",
