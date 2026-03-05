@@ -10,13 +10,14 @@ import {
   SidebarMenuButton,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { HeartPulse, Home, FileCheck, BarChart3, ShieldAlert } from 'lucide-react';
+import { HeartPulse, Home, FileCheck, BarChart3, ShieldAlert, History } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home, matchExact: true },
   { href: '/validation', label: 'Validation', icon: FileCheck },
   { href: '/analysis', label: 'Analysis', icon: BarChart3 },
   { href: '/patients', label: 'Patients', icon: ShieldAlert },
+  { href: '/patient-history', label: 'Patient History', icon: History },
 ];
 
 export function SidebarNav() {
