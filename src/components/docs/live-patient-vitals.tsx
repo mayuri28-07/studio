@@ -61,10 +61,11 @@ const getVitalStatus = (vitals: Omit<PatientVital, 'id' | 'name' | 'status'>): V
 };
 
 export function LivePatientVitals() {
-  const [vitals, setVitals] = useState<PatientVital[]>(initialPatientVitals);
+  const [vitals, setVitals] = useState<PatientVital[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    setVitals(initialPatientVitals);
     const interval = setInterval(() => {
       setVitals(prevVitals =>
         prevVitals.map(patient => {
