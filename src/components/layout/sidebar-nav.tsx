@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { HeartPulse, Home, FileCheck, BarChart3, ShieldAlert, History, Bot } from 'lucide-react';
+import { HeartPulse, Home, FileCheck, BarChart3, ShieldAlert, History } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home, matchExact: true },
@@ -18,7 +18,6 @@ const navItems = [
   { href: '/analysis', label: 'Analysis', icon: BarChart3 },
   { href: '/patients', label: 'Patients', icon: ShieldAlert },
   { href: '/patient-history', label: 'Patient History', icon: History },
-  { href: '/chatbot', label: 'Chatbot', icon: Bot },
 ];
 
 export function SidebarNav() {
