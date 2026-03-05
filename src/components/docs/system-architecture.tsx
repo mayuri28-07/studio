@@ -9,7 +9,7 @@ const features = [
   { icon: <FileCheck className="w-8 h-8 text-primary" />, title: "Data Validation", description: "Ensures the integrity and quality of all incoming data through automated validation checks before processing." },
   { icon: <BrainCircuit className="w-8 h-8 text-primary" />, title: "Model Training", description: "Utilizes historical data to train and refine anomaly detection models, continuously improving their accuracy and reliability." },
   { icon: <Lock className="w-8 h-8 text-primary" />, title: "Secure Data Handling", description: "Employs robust security measures to ensure patient data is handled with the utmost confidentiality and compliance." },
-  { icon: <Mail className="w-8 h-8 text-accent" />, title: "Automated Alerting", description: "Instantly notifies healthcare professionals when a critical anomaly is detected, enabling rapid intervention." },
+  { icon: <Mail className="w-8 h-8 text-accent" />, title: "Automated Alerting", description: "Critical anomalies trigger automated email alerts to patients or their guardians. These alerts include Patient ID, vital signs, severity level, and an AI-generated summary. Cooldown logic prevents alert fatigue." },
 ];
 
 export function SystemArchitecture() {
