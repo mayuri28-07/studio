@@ -5,7 +5,7 @@ const statsData = [
     {
       title: "Current Patients",
       value: "125",
-      icon: <Users className="h-4 w-4 text-muted-foreground" />,
+      icon: <Users className="h-4 w-4 text-accent" />,
     },
     {
       title: "High-Risk Alerts",
@@ -15,7 +15,7 @@ const statsData = [
     {
       title: "Anomalies Detected (3 mo)",
       value: "1,289",
-      icon: <Zap className="h-4 w-4 text-accent" />,
+      icon: <Zap className="h-4 w-4 text-primary" />,
     },
 ];
 
@@ -36,7 +36,7 @@ export function ProjectOverview() {
                 </p>
                 <div className="grid gap-4 md:grid-cols-3">
                     {statsData.map((stat) => (
-                        <Card key={stat.title}>
+                        <Card key={stat.title} className="transition-shadow duration-300 hover:shadow-lg">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                 <CardTitle className="text-sm font-medium">
                                     {stat.title}
