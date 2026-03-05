@@ -1,4 +1,5 @@
 import { HeartPulse, Network } from 'lucide-react';
+import { ThemeToggle } from '../theme-toggle';
 
 export function Header() {
   return (
@@ -17,7 +18,10 @@ export function Header() {
             </p>
           </div>
         </div>
-        <Network className="h-8 w-8 text-accent" />
+        <div className="flex items-center gap-4">
+          <Network className="h-8 w-8 text-accent" />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

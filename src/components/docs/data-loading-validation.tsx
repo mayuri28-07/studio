@@ -39,7 +39,7 @@ export function DataLoadingValidation() {
         </Card>
         
         <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Dataset Preview</h3>
-        <p>A preview of the dataset is inspected to ensure it matches the expected format. The following shows a sample from the dataset using a Pandas <code className="font-code bg-muted text-foreground p-1 rounded-sm">.head()</code> command.</p>
+        <p>A preview of the incoming data stream is inspected to ensure it matches the expected format. The following shows an example data payload for a single reading.</p>
         <CodeBlock>{pandasHeadOutput}</CodeBlock>
     </DocSection>
   );

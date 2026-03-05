@@ -2,10 +2,7 @@ import { Header } from '@/components/layout/header';
 import { ProjectOverview } from '@/components/docs/project-overview';
 import { SystemArchitecture } from '@/components/docs/system-architecture';
 import { DataLoadingValidation } from '@/components/docs/data-loading-validation';
-import { Prerequisites } from '@/components/docs/prerequisites';
-import { DependencyInstallation } from '@/components/docs/dependency-installation';
-import { DevelopmentTools } from '@/components/docs/development-tools';
-import { LearningResources } from '@/components/docs/learning-resources';
+import { SetupStatus } from '@/components/docs/setup-status';
 
 export default function Home() {
   return (
@@ -15,10 +12,7 @@ export default function Home() {
         <ProjectOverview />
         <SystemArchitecture />
         <DataLoadingValidation />
-        <Prerequisites />
-        <DependencyInstallation />
-        <DevelopmentTools />
-        <LearningResources />
+        <SetupStatus />
       </main>
       <footer className="text-center p-6 text-muted-foreground text-sm border-t">
         <p>HealthSense AI &copy; {new Date().getFullYear()}</p>
