@@ -1,21 +1,25 @@
 import { Users, ShieldAlert, Zap, FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 const statsData = [
     {
       title: "Current Patients",
       value: "125",
       icon: <Users className="h-4 w-4 text-accent" />,
+      hoverClass: "hover:border-accent",
     },
     {
       title: "High-Risk Alerts",
       value: "42",
       icon: <ShieldAlert className="h-4 w-4 text-destructive" />,
+      hoverClass: "hover:border-destructive",
     },
     {
       title: "Anomalies Detected (3 mo)",
       value: "1,289",
       icon: <Zap className="h-4 w-4 text-primary" />,
+      hoverClass: "hover:border-primary",
     },
 ];
 
@@ -36,7 +40,7 @@ export function ProjectOverview() {
                 </p>
                 <div className="grid gap-4 md:grid-cols-3">
                     {statsData.map((stat) => (
-                        <Card key={stat.title} className="transition-shadow duration-300 hover:shadow-lg">
+                        <Card key={stat.title} className={cn("transition-all duration-300 hover:shadow-lg", stat.hoverClass)}>
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                 <CardTitle className="text-sm font-medium">
                                     {stat.title}
