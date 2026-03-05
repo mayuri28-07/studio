@@ -5,7 +5,8 @@ import { DocSection } from './doc-section';
 import { Card } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Activity, ShieldAlert, ShieldCheck, ShieldQuestion } from 'lucide-react';
+import { Activity, ShieldAlert, ShieldCheck, ShieldQuestion, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 type VitalStatus = 'NORMAL' | 'WARNING' | 'CRITICAL';
 
@@ -30,6 +31,11 @@ const initialPatientVitals: PatientVital[] = [
   { id: 8, name: 'Laura Martinez', heartRate: 92, bpSystolic: 132, bpDiastolic: 86, spO2: 95, status: 'WARNING' },
   { id: 9, name: 'James Taylor', heartRate: 55, bpSystolic: 105, bpDiastolic: 65, spO2: 96, status: 'WARNING' },
   { id: 10, name: 'Patricia Garcia', heartRate: 78, bpSystolic: 122, bpDiastolic: 78, spO2: 98, status: 'NORMAL' },
+  { id: 11, name: 'Charles Anderson', heartRate: 115, bpSystolic: 155, bpDiastolic: 98, spO2: 91, status: 'CRITICAL' },
+  { id: 12, name: 'Linda Hernandez', heartRate: 85, bpSystolic: 128, bpDiastolic: 82, spO2: 97, status: 'NORMAL' },
+  { id: 13, name: 'Thomas Clark', heartRate: 60, bpSystolic: 110, bpDiastolic: 70, spO2: 99, status: 'NORMAL' },
+  { id: 14, name: 'Barbara Lewis', heartRate: 100, bpSystolic: 140, bpDiastolic: 90, spO2: 93, status: 'CRITICAL' },
+  { id: 15, name: 'Daniel Lee', heartRate: 98, bpSystolic: 138, bpDiastolic: 89, spO2: 95, status: 'WARNING' },
 ];
 
 const statusConfig: { [key in VitalStatus]: { variant: 'secondary' | 'default' | 'destructive'; icon: React.ReactNode; label: string } } = {
@@ -56,6 +62,7 @@ const getVitalStatus = (vitals: Omit<PatientVital, 'id' | 'name' | 'status'>): V
 
 export function LivePatientVitals() {
   const [vitals, setVitals] = useState<PatientVital[]>(initialPatientVitals);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -76,12 +83,27 @@ export function LivePatientVitals() {
     return () => clearInterval(interval);
   }, []);
 
+  const filteredVitals = vitals.filter(patient =>
+    patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    patient.id.toString().includes(searchTerm)
+  );
+
   return (
     <DocSection title="Live Patient Vitals Simulation" icon={<Activity className="w-6 h-6" />} id="live-vitals">
       <p>
         This table simulates a real-time feed of patient vital signs. Data is continuously updated to reflect the dynamic nature of patient monitoring in a clinical setting. Status indicators automatically flag patients requiring attention.
       </p>
-      <Card className="mt-8">
+      <div className="relative my-4">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input
+          type="text"
+          placeholder="Search by patient name or ID..."
+          className="pl-10"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      <Card className="mt-4">
         <Table>
           <TableHeader>
             <TableRow>
@@ -93,9 +115,9 @@ export function LivePatientVitals() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {vitals.map(patient => (
+            {filteredVitals.map(patient => (
               <TableRow key={patient.id}>
-                <TableCell className="font-medium">{patient.name}</TableCell>
+                <TableCell className="font-medium">{patient.name} (ID: {patient.id})</TableCell>
                 <TableCell>{patient.heartRate}</TableCell>
                 <TableCell>{`${patient.bpSystolic}/${patient.bpDiastolic}`}</TableCell>
                 <TableCell>{patient.spO2}</TableCell>

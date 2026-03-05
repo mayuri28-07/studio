@@ -1,4 +1,7 @@
-import { History } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { History, Search } from 'lucide-react';
 import { DocSection } from './doc-section';
 import { Card } from '@/components/ui/card';
 import {
@@ -10,6 +13,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
 
 const historyData = [
     {
@@ -92,6 +96,46 @@ const historyData = [
         details: 'Respiratory rate dropped below 10 breaths/min.',
         severity: 'HIGH',
     },
+    {
+        patientId: 15,
+        patientName: 'Daniel Lee',
+        timestamp: '2024-07-26 10:00:00',
+        eventType: 'Anomaly Detected',
+        details: 'Elevated blood pressure reading.',
+        severity: 'WARNING',
+    },
+    {
+        patientId: 14,
+        patientName: 'Barbara Lewis',
+        timestamp: '2024-07-26 09:30:00',
+        eventType: 'Vitals Logged',
+        details: 'Routine check-in, vitals normal.',
+        severity: 'NORMAL',
+    },
+    {
+        patientId: 5,
+        patientName: 'Michael Green',
+        timestamp: '2024-07-26 08:00:00',
+        eventType: 'Vitals Logged',
+        details: 'Morning vitals are stable.',
+        severity: 'NORMAL',
+    },
+    {
+        patientId: 4,
+        patientName: 'Emily White',
+        timestamp: '2024-07-25 17:45:00',
+        eventType: 'Anomaly Detected',
+        details: 'Irregular SpO2 fluctuations.',
+        severity: 'WARNING',
+    },
+    {
+        patientId: 12,
+        patientName: 'Linda Hernandez',
+        timestamp: '2024-07-25 16:00:00',
+        eventType: 'Alert Triggered',
+        details: 'Heart rate fell below 50 BPM.',
+        severity: 'CRITICAL',
+    },
 ];
 
 const severityVariantMap: { [key: string]: 'destructive' | 'default' | 'secondary' } = {
@@ -102,12 +146,29 @@ const severityVariantMap: { [key: string]: 'destructive' | 'default' | 'secondar
 };
 
 export function PatientHistory() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredHistory = historyData.filter(event =>
+    event.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    event.patientId.toString().includes(searchTerm)
+  );
+
   return (
     <DocSection title="Patient History Log" icon={<History className="w-6 h-6" />} id="patient-history">
       <p>
         This section provides a comprehensive log of all significant events for each patient, including detected anomalies, triggered alerts, and routine vital sign logs. Reviewing historical data is crucial for understanding patient trends and making informed clinical decisions.
       </p>
-      <Card className="mt-8">
+      <div className="relative my-4">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input
+          type="text"
+          placeholder="Search by patient name or ID..."
+          className="pl-10"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      <Card className="mt-4">
         <Table>
           <TableHeader>
             <TableRow>
@@ -119,7 +180,7 @@ export function PatientHistory() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {historyData.map((event, index) => (
+            {filteredHistory.map((event, index) => (
               <TableRow key={index}>
                 <TableCell className="font-medium">{event.patientName} (ID: {event.patientId})</TableCell>
                 <TableCell>{event.timestamp}</TableCell>
