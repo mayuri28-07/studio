@@ -48,6 +48,7 @@ export function PatientRiskStratification() {
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead>Patient ID</TableHead>
               <TableHead>Patient</TableHead>
               <TableHead>Age</TableHead>
               <TableHead>Condition</TableHead>
@@ -58,6 +59,7 @@ export function PatientRiskStratification() {
           <TableBody>
             {patientConditions.map((patient) => (
               <TableRow key={patient.id}>
+                <TableCell className="font-medium">{patient.id}</TableCell>
                 <TableCell className="font-medium">{patient.name}</TableCell>
                 <TableCell>{patient.age}</TableCell>
                 <TableCell>{patient.condition}</TableCell>
