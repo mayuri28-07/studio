@@ -1,18 +1,55 @@
-import { FileText } from 'lucide-react';
-import { DocSection } from './doc-section';
+import { Users, ShieldAlert, Zap, FileText } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+const statsData = [
+    {
+      title: "Current Patients",
+      value: "125",
+      icon: <Users className="h-4 w-4 text-muted-foreground" />,
+    },
+    {
+      title: "High-Risk Alerts",
+      value: "42",
+      icon: <ShieldAlert className="h-4 w-4 text-destructive" />,
+    },
+    {
+      title: "Anomalies Detected (3 mo)",
+      value: "1,289",
+      icon: <Zap className="h-4 w-4 text-accent" />,
+    },
+];
 
 export function ProjectOverview() {
-  return (
-    <DocSection title="Project Overview" icon={<FileText className="w-6 h-6" />} id="overview">
-      <p>
-        The <strong className="text-foreground">AI-Driven Healthcare Anomaly Detection System</strong>, HealthSense AI, is a platform designed to enhance patient care through real-time monitoring and intelligent analysis of vital signs.
-      </p>
-      <p>
-        Its core purpose is to continuously monitor crucial patient vitals—such as heart rate, blood pressure, and SpO2—and employ sophisticated AI models to detect anomalies as they happen. By identifying these deviations from normal patterns early, the system provides healthcare professionals with timely insights, enabling quicker interventions and potentially preventing critical health events.
-      </p>
-      <p>
-        The platform features a comprehensive dashboard for visualizing patient data and detected anomalies, complemented by an automated alert system that notifies staff of critical situations via email. This combination of real-time data processing, AI-powered detection, and immediate notification makes HealthSense AI a powerful tool in modern patient monitoring.
-      </p>
-    </DocSection>
-  );
+    return (
+        <section id="overview" className="py-8 md:py-12 border-b last:border-b-0">
+            <div className="flex items-center gap-4 mb-8">
+                <div className="bg-primary/10 text-primary p-3 rounded-lg">
+                    <FileText className="w-6 h-6" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold font-headline text-foreground tracking-tight">
+                    Platform Overview
+                </h2>
+            </div>
+            <div className="space-y-6">
+                <p className="text-base text-muted-foreground leading-relaxed">
+                    HealthSense AI is a platform designed to enhance patient care through real-time monitoring and intelligent analysis of vital signs. It provides healthcare professionals with timely insights to enable quicker interventions.
+                </p>
+                <div className="grid gap-4 md:grid-cols-3">
+                    {statsData.map((stat) => (
+                        <Card key={stat.title}>
+                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                                <CardTitle className="text-sm font-medium">
+                                    {stat.title}
+                                </CardTitle>
+                                {stat.icon}
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-2xl font-bold">{stat.value}</div>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }
