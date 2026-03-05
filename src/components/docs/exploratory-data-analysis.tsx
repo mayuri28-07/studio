@@ -3,8 +3,8 @@
 import { BarChart3, CheckCircle2 } from 'lucide-react';
 import { DocSection } from './doc-section';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart"
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, type ChartConfig } from "@/components/ui/chart"
+import { CartesianGrid, Line, LineChart, Pie, PieChart, XAxis, YAxis } from "recharts"
 
 const chartData = [
     { time: "00:00", heartRate: 72, spO2: 98 },
@@ -36,6 +36,40 @@ const selectedFeatures = [
     "Derived HRV",
     "Derived MAP",
 ];
+
+const successRateData = [
+  { name: 'successful', value: 85, fill: 'var(--color-successful)' },
+  { name: 'ongoing', value: 10, fill: 'var(--color-ongoing)' },
+  { name: 'failed', value: 5, fill: 'var(--color-failed)' },
+];
+const successRateConfig = {
+    successful: { label: 'Successful', color: 'hsl(var(--chart-2))' },
+    ongoing: { label: 'Ongoing', color: 'hsl(var(--chart-4))' },
+    failed: { label: 'Failed', color: 'hsl(var(--chart-1))' },
+} satisfies ChartConfig;
+
+const reviewsData = [
+    { name: 'positive', value: 320, fill: 'var(--color-positive)' },
+    { name: 'neutral', value: 50, fill: 'var(--color-neutral)' },
+    { name: 'negative', value: 30, fill: 'var(--color-negative)' },
+];
+const reviewsConfig = {
+    positive: { label: 'Positive', color: 'hsl(var(--chart-2))' },
+    neutral: { label: 'Neutral', color: 'hsl(var(--chart-4))' },
+    negative: { label: 'Negative', color: 'hsl(var(--chart-1))' },
+} satisfies ChartConfig;
+
+const medicineAvailabilityData = [
+    { name: 'inStock', value: 500, fill: 'var(--color-inStock)' },
+    { name: 'lowStock', value: 150, fill: 'var(--color-lowStock)' },
+    { name: 'outOfStock', value: 50, fill: 'var(--color-outOfStock)' },
+];
+const medicineAvailabilityConfig = {
+    inStock: { label: 'In Stock', color: 'hsl(var(--chart-2))' },
+    lowStock: { label: 'Low Stock', color: 'hsl(var(--chart-4))' },
+    outOfStock: { label: 'Out of Stock', color: 'hsl(var(--chart-1))' },
+} satisfies ChartConfig;
+
 
 export function ExploratoryDataAnalysis() {
   return (
@@ -76,6 +110,52 @@ export function ExploratoryDataAnalysis() {
           </ChartContainer>
         </CardContent>
       </Card>
+
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Platform Metrics</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card>
+                <CardHeader>
+                    <CardTitle>Treatment Success Rate</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ChartContainer config={successRateConfig} className="h-[250px] w-full">
+                        <PieChart>
+                            <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                            <Pie data={successRateData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} />
+                            <ChartLegend content={<ChartLegendContent nameKey="name" />} />
+                        </PieChart>
+                    </ChartContainer>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Patient Reviews</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ChartContainer config={reviewsConfig} className="h-[250px] w-full">
+                        <PieChart>
+                            <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                            <Pie data={reviewsData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} />
+                            <ChartLegend content={<ChartLegendContent nameKey="name" />} />
+                        </PieChart>
+                    </ChartContainer>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Medicine Availability</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ChartContainer config={medicineAvailabilityConfig} className="h-[250px] w-full">
+                        <PieChart>
+                            <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                            <Pie data={medicineAvailabilityData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} />
+                            <ChartLegend content={<ChartLegendContent nameKey="name" />} />
+                        </PieChart>
+                    </ChartContainer>
+                </CardContent>
+            </Card>
+        </div>
       
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Selected Features for Anomaly Detection</h3>
       <p>
