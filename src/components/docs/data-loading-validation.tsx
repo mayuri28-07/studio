@@ -18,11 +18,11 @@ const validationChecks = [
 ];
 
 const datasetPreview = [
-    { patient_id: 1, heart_rate: 75, bp_systolic: 120, bp_diastolic: 80, spo2: 98, timestamp: '1672531200000' },
-    { patient_id: 2, heart_rate: 90, bp_systolic: 130, bp_diastolic: 85, spo2: 97, timestamp: '1672531200000' },
-    { patient_id: 3, heart_rate: 60, bp_systolic: 110, bp_diastolic: 70, spo2: 99, timestamp: '1672531200000' },
-    { patient_id: 4, heart_rate: 100, bp_systolic: 140, bp_diastolic: 90, spo2: 95, timestamp: '1672531200000' },
-    { patient_id: 5, heart_rate: 80, bp_systolic: 115, bp_diastolic: 75, spo2: 98, timestamp: '1672531200000' },
+    { patient_id: 1, heart_rate: 75, bp_systolic: 120, bp_diastolic: 80, spo2: 98, time: '08:00:05' },
+    { patient_id: 2, heart_rate: 90, bp_systolic: 130, bp_diastolic: 85, spo2: 97, time: '08:00:10' },
+    { patient_id: 3, heart_rate: 60, bp_systolic: 110, bp_diastolic: 70, spo2: 99, time: '08:00:15' },
+    { patient_id: 4, heart_rate: 100, bp_systolic: 140, bp_diastolic: 90, spo2: 95, time: '08:00:20' },
+    { patient_id: 5, heart_rate: 80, bp_systolic: 115, bp_diastolic: 75, spo2: 98, time: '08:00:25' },
 ];
 
 export function DataLoadingValidation() {
@@ -57,7 +57,7 @@ export function DataLoadingValidation() {
                 <TableHead>BP Systolic</TableHead>
                 <TableHead>BP Diastolic</TableHead>
                 <TableHead>SpO2 (%)</TableHead>
-                <TableHead className="text-right">Timestamp</TableHead>
+                <TableHead className="text-right">Time</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -68,7 +68,7 @@ export function DataLoadingValidation() {
                   <TableCell>{row.bp_systolic}</TableCell>
                   <TableCell>{row.bp_diastolic}</TableCell>
                   <TableCell>{row.spo2}</TableCell>
-                  <TableCell className="text-right">{row.timestamp}</TableCell>
+                  <TableCell className="text-right">{row.time}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
