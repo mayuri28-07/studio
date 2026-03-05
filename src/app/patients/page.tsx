@@ -1,10 +1,10 @@
-import { AnomalyScoring } from '@/components/docs/anomaly-scoring';
 import { PatientRiskStratification } from '@/components/docs/patient-risk-stratification';
+import { LivePatientVitals } from '@/components/docs/live-patient-vitals';
 
 export default function PatientsPage() {
   return (
     <>
-      <AnomalyScoring />
+      <LivePatientVitals />
       <PatientRiskStratification />
     </>
   );
