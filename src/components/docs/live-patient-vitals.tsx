@@ -25,6 +25,11 @@ const initialPatientVitals: PatientVital[] = [
   { id: 3, name: 'Robert Brown', heartRate: 110, bpSystolic: 150, bpDiastolic: 95, spO2: 92, status: 'CRITICAL' },
   { id: 4, name: 'Emily White', heartRate: 80, bpSystolic: 125, bpDiastolic: 82, spO2: 97, status: 'NORMAL' },
   { id: 5, name: 'Michael Green', heartRate: 65, bpSystolic: 115, bpDiastolic: 75, spO2: 99, status: 'NORMAL' },
+  { id: 6, name: 'Sarah Johnson', heartRate: 88, bpSystolic: 128, bpDiastolic: 84, spO2: 97, status: 'NORMAL' },
+  { id: 7, name: 'David Wilson', heartRate: 105, bpSystolic: 145, bpDiastolic: 92, spO2: 94, status: 'CRITICAL' },
+  { id: 8, name: 'Laura Martinez', heartRate: 92, bpSystolic: 132, bpDiastolic: 86, spO2: 95, status: 'WARNING' },
+  { id: 9, name: 'James Taylor', heartRate: 55, bpSystolic: 105, bpDiastolic: 65, spO2: 96, status: 'WARNING' },
+  { id: 10, name: 'Patricia Garcia', heartRate: 78, bpSystolic: 122, bpDiastolic: 78, spO2: 98, status: 'NORMAL' },
 ];
 
 const statusConfig: { [key in VitalStatus]: { variant: 'secondary' | 'default' | 'destructive'; icon: React.ReactNode; label: string } } = {
