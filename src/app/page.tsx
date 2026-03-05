@@ -1,6 +1,7 @@
 import { ProjectOverview } from '@/components/docs/project-overview';
 import { SystemArchitecture } from '@/components/docs/system-architecture';
 import { SetupStatus } from '@/components/docs/setup-status';
+import { PatientReviews } from '@/components/docs/patient-reviews';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <ProjectOverview />
       <SystemArchitecture />
       <SetupStatus />
+      <PatientReviews />
     </>
   );
 }
