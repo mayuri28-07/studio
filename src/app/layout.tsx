@@ -1,6 +1,9 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import {ThemeProvider} from '@/components/theme-provider';
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { AppShell } from '@/components/layout/app-shell';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Firebase Studio App',
@@ -21,7 +24,12 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
+            <SidebarProvider>
+                <AppShell>
+                    {children}
+                </AppShell>
+            </SidebarProvider>
+            <Toaster />
         </ThemeProvider>
       </body>
     </html>
