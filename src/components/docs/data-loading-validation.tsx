@@ -1,7 +1,14 @@
-import { FileCheck, CheckCircle } from 'lucide-react';
+import { FileCheck, CheckCircle2 } from 'lucide-react';
 import { DocSection } from './doc-section';
 import { Card, CardContent } from '@/components/ui/card';
-import { CodeBlock } from './code-block';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const validationChecks = [
     "Dataset shape and size",
@@ -10,12 +17,13 @@ const validationChecks = [
     "Consistency of numerical ranges",
 ];
 
-const pandasHeadOutput = `   patient_id  heart_rate  bp_systolic  bp_diastolic  spo2      timestamp
-0           1          75          120            80    98  1672531200000
-1           2          90          130            85    97  1672531200000
-2           3          60          110            70    99  1672531200000
-3           4         100          140            90    95  1672531200000
-4           5          80          115            75    98  1672531200000`;
+const datasetPreview = [
+    { patient_id: 1, heart_rate: 75, bp_systolic: 120, bp_diastolic: 80, spo2: 98, timestamp: '1672531200000' },
+    { patient_id: 2, heart_rate: 90, bp_systolic: 130, bp_diastolic: 85, spo2: 97, timestamp: '1672531200000' },
+    { patient_id: 3, heart_rate: 60, bp_systolic: 110, bp_diastolic: 70, spo2: 99, timestamp: '1672531200000' },
+    { patient_id: 4, heart_rate: 100, bp_systolic: 140, bp_diastolic: 90, spo2: 95, timestamp: '1672531200000' },
+    { patient_id: 5, heart_rate: 80, bp_systolic: 115, bp_diastolic: 75, spo2: 98, timestamp: '1672531200000' },
+];
 
 export function DataLoadingValidation() {
   return (
@@ -26,10 +34,10 @@ export function DataLoadingValidation() {
         <Card className="bg-card">
             <CardContent className="p-6">
                 <ul className="space-y-4">
-                    {validationChecks.map(check => (
-                      <li key={check} className="flex items-start gap-4">
+                    {validationChecks.map((check, index) => (
+                      <li key={index} className="flex items-start gap-4">
                         <div className="bg-primary/10 rounded-full p-2 mt-1">
-                          <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                         </div>
                         <span className="font-medium text-foreground">{check}</span>
                       </li>
@@ -40,7 +48,32 @@ export function DataLoadingValidation() {
         
         <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Dataset Preview</h3>
         <p>A preview of the incoming data stream is inspected to ensure it matches the expected format. The following shows an example data payload for a single reading.</p>
-        <CodeBlock>{pandasHeadOutput}</CodeBlock>
+        <Card className="mt-4">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[120px]">Patient ID</TableHead>
+                <TableHead>Heart Rate</TableHead>
+                <TableHead>BP Systolic</TableHead>
+                <TableHead>BP Diastolic</TableHead>
+                <TableHead>SpO2 (%)</TableHead>
+                <TableHead className="text-right">Timestamp</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {datasetPreview.map((row) => (
+                <TableRow key={row.patient_id}>
+                  <TableCell className="font-medium">{row.patient_id}</TableCell>
+                  <TableCell>{row.heart_rate}</TableCell>
+                  <TableCell>{row.bp_systolic}</TableCell>
+                  <TableCell>{row.bp_diastolic}</TableCell>
+                  <TableCell>{row.spo2}</TableCell>
+                  <TableCell className="text-right">{row.timestamp}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Card>
     </DocSection>
   );
 }
