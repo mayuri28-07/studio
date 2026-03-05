@@ -1,6 +1,6 @@
 
 'use client';
-import { BarChart3 } from 'lucide-react';
+import { BarChart3, CheckCircle2 } from 'lucide-react';
 import { DocSection } from './doc-section';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart"
@@ -26,6 +26,16 @@ const chartConfig = {
       color: "hsl(var(--chart-2))",
     },
 } satisfies ChartConfig
+
+const selectedFeatures = [
+    "Heart Rate",
+    "Respiratory Rate",
+    "Body Temperature",
+    "Oxygen Saturation (SpO₂)",
+    "Systolic & Diastolic Blood Pressure",
+    "Derived HRV",
+    "Derived MAP",
+];
 
 export function ExploratoryDataAnalysis() {
   return (
@@ -64,6 +74,25 @@ export function ExploratoryDataAnalysis() {
               <Line dataKey="spO2" type="monotone" stroke="var(--color-spO2)" strokeWidth={2} dot={true} />
             </LineChart>
           </ChartContainer>
+        </CardContent>
+      </Card>
+      
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Selected Features for Anomaly Detection</h3>
+      <p>
+        These features collectively represent a patient’s physiological condition and are used for anomaly detection.
+      </p>
+      <Card className="mt-4">
+        <CardContent className="p-6">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                {selectedFeatures.map((feature) => (
+                  <li key={feature} className="flex items-center gap-3">
+                    <div className="bg-primary/10 rounded-full p-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                    </div>
+                    <span className="font-medium text-foreground text-sm">{feature}</span>
+                  </li>
+                ))}
+            </ul>
         </CardContent>
       </Card>
     </DocSection>
