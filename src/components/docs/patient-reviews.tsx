@@ -2,32 +2,33 @@ import { Star, MessageCircle } from 'lucide-react';
 import { DocSection } from './doc-section';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const reviews = [
   {
     name: 'Sarah L.',
-    avatarUrl: 'https://picsum.photos/seed/sarah/100/100',
+    avatarId: 'patient-sarah',
     avatarFallback: 'SL',
     review: 'The real-time monitoring gave me and my family peace of mind. Knowing that a team was alerted to any anomaly in my heart condition was incredibly reassuring.',
     rating: 5,
   },
   {
     name: 'David R.',
-    avatarUrl: 'https://picsum.photos/seed/david/100/100',
+    avatarId: 'patient-david',
     avatarFallback: 'DR',
     review: 'HealthSense AI detected a critical drop in my oxygen levels overnight. The immediate alert allowed for a swift response that likely prevented a serious complication.',
     rating: 5,
   },
   {
     name: 'Maria G.',
-    avatarUrl: 'https://picsum.photos/seed/maria/100/100',
+    avatarId: 'patient-maria',
     avatarFallback: 'MG',
     review: "As a caregiver for my elderly father, this platform has been a game-changer. I can check his vitals from anywhere and trust that the system is watching over him.",
     rating: 5,
   },
    {
     name: 'John K.',
-    avatarUrl: 'https://picsum.photos/seed/john/100/100',
+    avatarId: 'patient-john',
     avatarFallback: 'JK',
     review: 'The AI-generated reports are easy to understand and helped me have more informed conversations with my doctor. It\'s a brilliant tool for patient empowerment.',
     rating: 4,
@@ -42,12 +43,14 @@ export function PatientReviews() {
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          {reviews.map((review) => (
+          {reviews.map((review) => {
+            const image = PlaceHolderImages.find(img => img.id === review.avatarId);
+            return (
             <Card key={review.name} className="flex flex-col bg-card">
               <CardHeader>
                 <div className="flex items-center gap-4">
                     <Avatar>
-                        <AvatarImage src={review.avatarUrl} alt={review.name} data-ai-hint="person face" />
+                        <AvatarImage src={image?.imageUrl} alt={review.name} data-ai-hint={image?.imageHint} />
                         <AvatarFallback>{review.avatarFallback}</AvatarFallback>
                     </Avatar>
                     <div>
@@ -64,7 +67,7 @@ export function PatientReviews() {
                 <p className="text-sm text-muted-foreground italic">"{review.review}"</p>
               </CardContent>
             </Card>
-          ))}
+          )})}
       </div>
     </DocSection>
   );

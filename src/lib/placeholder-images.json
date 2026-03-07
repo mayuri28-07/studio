@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "patient-sarah",
+      "description": "Avatar for patient Sarah L.",
+      "imageUrl": "https://picsum.photos/seed/sarah/100/100",
+      "imageHint": "person face"
+    },
+    {
+      "id": "patient-david",
+      "description": "Avatar for patient David R.",
+      "imageUrl": "https://picsum.photos/seed/david/100/100",
+      "imageHint": "person face"
+    },
+    {
+      "id": "patient-maria",
+      "description": "Avatar for patient Maria G.",
+      "imageUrl": "https://picsum.photos/seed/maria/100/100",
+      "imageHint": "person face"
+    },
+    {
+      "id": "patient-john",
+      "description": "Avatar for patient John K.",
+      "imageUrl": "https://picsum.photos/seed/john/100/100",
+      "imageHint": "person face"
+    },
+    {
+      "id": "doctor-evelyn",
+      "description": "Avatar for Dr. Evelyn Reed",
+      "imageUrl": "https://picsum.photos/seed/doc1/100/100",
+      "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-samuel",
+      "description": "Avatar for Dr. Samuel Chen",
+      "imageUrl": "https://picsum.photos/seed/doc2/100/100",
+      "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-olivia",
+      "description": "Avatar for Dr. Olivia Grant",
+      "imageUrl": "https://picsum.photos/seed/doc3/100/100",
+      "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-benjamin",
+      "description": "Avatar for Dr. Benjamin Carter",
+      "imageUrl": "https://picsum.photos/seed/doc4/100/100",
+      "imageHint": "doctor face"
+    }
+  ]
 }
