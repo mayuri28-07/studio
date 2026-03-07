@@ -1,8 +1,12 @@
+'use client';
+
+import { useState } from 'react';
 import { Users } from 'lucide-react';
 import { DocSection } from './doc-section';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { cn } from '@/lib/utils';
 
 const staff = [
   {
@@ -29,9 +33,35 @@ const staff = [
     avatarId: 'doctor-benjamin',
     avatarFallback: 'BC',
   },
+  {
+    name: 'Dr. Isabella Rossi',
+    specialization: 'Pediatrician',
+    avatarId: 'doctor-isabella',
+    avatarFallback: 'IR',
+  },
+  {
+    name: 'Dr. Marcus Thorne',
+    specialization: 'General Surgeon',
+    avatarId: 'doctor-marcus',
+    avatarFallback: 'MT',
+  },
+  {
+    name: 'Dr. Chloe Decker',
+    specialization: 'Oncologist',
+    avatarId: 'doctor-chloe',
+    avatarFallback: 'CD',
+  },
+  {
+    name: 'Dr. Julian Alvarez',
+    specialization: 'Dermatologist',
+    avatarId: 'doctor-julian',
+    avatarFallback: 'JA',
+  },
 ];
 
 export function DoctorStaff() {
+  const [selectedDoctor, setSelectedDoctor] = useState<string | null>(null);
+
   return (
     <DocSection title="Meet Our Expert Team" icon={<Users className="w-6 h-6" />} id="doctor-staff">
       <p>
@@ -41,8 +71,16 @@ export function DoctorStaff() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
         {staff.map((doctor) => {
             const image = PlaceHolderImages.find(img => img.id === doctor.avatarId);
+            const isSelected = selectedDoctor === doctor.name;
             return (
-                <Card key={doctor.name} className="flex flex-col items-center text-center bg-card shadow-md hover:shadow-lg transition-shadow duration-300">
+                <Card 
+                    key={doctor.name} 
+                    className={cn(
+                        "flex flex-col items-center text-center bg-card shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer",
+                        isSelected && "bg-primary/10 border-primary ring-2 ring-primary"
+                    )}
+                    onClick={() => setSelectedDoctor(isSelected ? null : doctor.name)}
+                >
                 <CardHeader>
                     <Avatar className="w-24 h-24 border">
                         <AvatarImage src={image?.imageUrl} alt={doctor.name} data-ai-hint={image?.imageHint} />

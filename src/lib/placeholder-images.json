@@ -47,6 +47,30 @@
       "description": "Avatar for Dr. Benjamin Carter",
       "imageUrl": "https://picsum.photos/seed/doc4/100/100",
       "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-isabella",
+      "description": "Avatar for Dr. Isabella Rossi",
+      "imageUrl": "https://picsum.photos/seed/doc5/100/100",
+      "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-marcus",
+      "description": "Avatar for Dr. Marcus Thorne",
+      "imageUrl": "https://picsum.photos/seed/doc6/100/100",
+      "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-chloe",
+      "description": "Avatar for Dr. Chloe Decker",
+      "imageUrl": "https://picsum.photos/seed/doc7/100/100",
+      "imageHint": "doctor face"
+    },
+    {
+      "id": "doctor-julian",
+      "description": "Avatar for Dr. Julian Alvarez",
+      "imageUrl": "https://picsum.photos/seed/doc8/100/100",
+      "imageHint": "doctor face"
     }
   ]
 }
