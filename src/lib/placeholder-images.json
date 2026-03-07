@@ -28,49 +28,49 @@
       "id": "doctor-evelyn",
       "description": "Avatar for Dr. Evelyn Reed",
       "imageUrl": "https://picsum.photos/seed/doc1/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-samuel",
       "description": "Avatar for Dr. Samuel Chen",
       "imageUrl": "https://picsum.photos/seed/doc2/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-olivia",
       "description": "Avatar for Dr. Olivia Grant",
       "imageUrl": "https://picsum.photos/seed/doc3/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-benjamin",
       "description": "Avatar for Dr. Benjamin Carter",
       "imageUrl": "https://picsum.photos/seed/doc4/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-isabella",
       "description": "Avatar for Dr. Isabella Rossi",
       "imageUrl": "https://picsum.photos/seed/doc5/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-marcus",
       "description": "Avatar for Dr. Marcus Thorne",
       "imageUrl": "https://picsum.photos/seed/doc6/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-chloe",
       "description": "Avatar for Dr. Chloe Decker",
       "imageUrl": "https://picsum.photos/seed/doc7/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     },
     {
       "id": "doctor-julian",
       "description": "Avatar for Dr. Julian Alvarez",
       "imageUrl": "https://picsum.photos/seed/doc8/100/100",
-      "imageHint": "doctor suit"
+      "imageHint": "professional doctor"
     }
   ]
 }
